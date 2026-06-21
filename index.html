@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employment Documents - Srikanth Nakka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts (optional, but we’ll override with Calibri) -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color: #333;
+    }
+    header {
+      background: #1f2937;
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .accordion {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      background: #fff;
+    }
+    .accordion-header {
+      background: #2563eb;
+      color: #fff;
+      cursor: pointer;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-header:hover {
+      background: #1e40af;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1rem;
+    }
+    .accordion-content.open {
+      padding: 1rem;
+    }
+    .company-dates {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    .doc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .doc-links a {
+      text-decoration: none;
+      background: #2563eb;
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: Calibri, sans-serif;
+      font-size: 9pt; /* Calibri size 9 */
+      transition: background 0.2s ease;
+    }
+    .doc-links a:hover {
+      background: #1e40af;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+    .arrow.rotate {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <header>Employment Documents - Srikanth Nakka</header>
+  <div class="container">
+
+    <!-- United Online -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>United Online (Jun 2010 – Feb 2016)</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="accordion-content">
+        <div class="doc-links">
+          <a href="#">Offer Letter</a>
+          <a href="#">Relieving Letter</a>
+          <a href="#">Experience Letter</a>
+          <a href="#">Resignation Letter</a>
+          <a href="#">Revision Letter</a>
+          <a href="#">Payslips</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Oracle -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Oracle (Feb 2016 – Nov 2022)</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="accordion-content">
+        <div class="doc-links">
+          <a href="#">Offer Letter</a>
+          <a href="#">Relieving Letter</a>
+          <a href="#">Experience Letter</a>
+          <a href="#">Resignation Letter</a>
+          <a href="#">Revision Letter</a>
+          <a href="#">Payslips</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDE (fka PTW) -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>SIDE (fka PTW) (Nov 2022 – Aug 2025)</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="accordion-content">
+        <div class="doc-links">
+          <a href="#">Offer Letter</a>
+          <a href="#">Relieving Letter</a>
+          <a href="#">Experience Letter</a>
+          <a href="#">Resignation Letter</a>
+          <a href="#">Revision Letter</a>
+          <a href="#">Payslips</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer>© 2026 Srikanth Nakka| Professional Employment Records</footer>
+
+  <script>
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(acc => {
+      const header = acc.querySelector('.accordion-header');
+      const content = acc.querySelector('.accordion-content');
+      const arrow = acc.querySelector('.arrow');
+      header.addEventListener('click', () => {
+        const isOpen = content.style.maxHeight;
+        if (isOpen) {
+          content.style.maxHeight = null;
+          content.classList.remove('open');
+          arrow.classList.remove('rotate');
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.add('open');
+          arrow.classList.add('rotate');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
