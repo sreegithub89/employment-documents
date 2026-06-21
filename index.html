@@ -1,178 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Employment Documents - Srikanth Nakka</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts (optional, but we’ll override with Calibri) -->
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-      color: #333;
+    :root{
+      --bg1:#f0f4f8; --bg2:#d9e2ec; --card:#ffffff;
+      --accent:#2563eb; --accent-dark:#1e40af; --muted:#6b7280; --text:#1f2937;
     }
-    header {
-      background: #1f2937;
-      color: #fff;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 1px;
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    body{
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--text); -webkit-font-smoothing:antialiased;
     }
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    header{background:var(--text); color:#fff; padding:1.25rem; text-align:center; font-weight:600; letter-spacing:0.6px; font-size:1.25rem;}
+    .container{max-width:980px;margin:2rem auto;padding:0 1rem;}
+    .accordion{background:var(--card);border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.08);overflow:hidden;margin-bottom:1rem;}
+    .accordion-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.9rem 1rem;cursor:pointer;background:var(--accent);color:#fff;font-weight:600;}
+    .accordion-header:hover{background:var(--accent-dark);}
+    .accordion-title{font-size:1rem;}
+    .accordion-content{max-height:0;overflow:hidden;transition:max-height 320ms ease,padding 320ms ease;padding:0 1rem;}
+    .accordion-content.open{padding:1rem;}
+    .company-dates{color:var(--muted);font-size:0.88rem;margin-bottom:0.6rem;}
+    .doc-links{display:flex;flex-wrap:wrap;gap:0.5rem;}
+    .doc-links a{
+      display:inline-block;text-decoration:none;background:var(--accent);color:#fff;padding:0.28rem 0.7rem;border-radius:6px;
+      font-family:Calibri, "Segoe UI", Roboto, Arial, sans-serif;font-size:9pt;
     }
-    .accordion {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-      background: #fff;
-    }
-    .accordion-header {
-      background: #2563eb;
-      color: #fff;
-      cursor: pointer;
-      padding: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .accordion-header:hover {
-      background: #1e40af;
-    }
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding: 0 1rem;
-    }
-    .accordion-content.open {
-      padding: 1rem;
-    }
-    .company-dates {
-      font-size: 0.9rem;
-      color: #6b7280;
-      margin-bottom: 1rem;
-    }
-    .doc-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-    .doc-links a {
-      text-decoration: none;
-      background: #2563eb;
-      color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-family: Calibri, sans-serif;
-      font-size: 9pt; /* Calibri size 9 */
-      transition: background 0.2s ease;
-    }
-    .doc-links a:hover {
-      background: #1e40af;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-    .arrow {
-      transition: transform 0.3s ease;
-    }
-    .arrow.rotate {
-      transform: rotate(90deg);
-    }
+    .doc-links a:hover{background:var(--accent-dark);}
+    .arrow{transition:transform 300ms ease;display:inline-block;}
+    .arrow.rotate{transform:rotate(90deg);}
+    footer{text-align:center;padding:1rem;color:var(--muted);font-size:0.85rem;margin-top:1rem;}
+    @media (max-width:520px){ .accordion-header{padding:0.75rem;} .accordion-title{font-size:0.95rem;} }
   </style>
 </head>
 <body>
   <header>Employment Documents - Srikanth Nakka</header>
-  <div class="container">
 
-    <!-- United Online -->
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>United Online (Jun 2010 – Feb 2016)</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        <div class="doc-links">
-          <a href="#">Offer Letter</a>
-          <a href="#">Relieving Letter</a>
-          <a href="#">Experience Letter</a>
-          <a href="#">Resignation Letter</a>
-          <a href="#">Revision Letter</a>
-          <a href="#">Payslips</a>
+  <main class="container" id="main">
+    <!-- Template for each company -->
+    <template id="company-template">
+      <section class="accordion">
+        <button type="button" class="accordion-header" aria-expanded="false">
+          <span class="accordion-title"></span>
+          <span class="arrow" aria-hidden="true">▶</span>
+        </button>
+        <div class="accordion-content" aria-hidden="true">
+          <div class="company-dates"></div>
+          <div class="doc-links"></div>
         </div>
-      </div>
-    </div>
+      </section>
+    </template>
 
-    <!-- Oracle -->
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>Oracle (Feb 2016 – Nov 2022)</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        <div class="doc-links">
-          <a href="#">Offer Letter</a>
-          <a href="#">Relieving Letter</a>
-          <a href="#">Experience Letter</a>
-          <a href="#">Resignation Letter</a>
-          <a href="#">Revision Letter</a>
-          <a href="#">Payslips</a>
-        </div>
-      </div>
-    </div>
+    <!-- Companies will be injected here -->
+  </main>
 
-    <!-- SIDE (fka PTW) -->
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>SIDE (fka PTW) (Nov 2022 – Aug 2025)</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        <div class="doc-links">
-          <a href="#">Offer Letter</a>
-          <a href="#">Relieving Letter</a>
-          <a href="#">Experience Letter</a>
-          <a href="#">Resignation Letter</a>
-          <a href="#">Revision Letter</a>
-          <a href="#">Payslips</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
   <footer>© 2026 Srikanth Nakka | Professional Employment Records</footer>
 
   <script>
-    const accordions = document.querySelectorAll('.accordion');
-    accordions.forEach(acc => {
-      const header = acc.querySelector('.accordion-header');
-      const content = acc.querySelector('.accordion-content');
-      const arrow = acc.querySelector('.arrow');
-      header.addEventListener('click', () => {
-        const isOpen = content.style.maxHeight;
-        if (isOpen) {
-          content.style.maxHeight = null;
-          content.classList.remove('open');
-          arrow.classList.remove('rotate');
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-          content.classList.add('open');
-          arrow.classList.add('rotate');
-        }
+    (function () {
+      const DROPBOX_URL = 'https://www.dropbox.com/scl/fo/apr6wnbdtmswyhy9j3uz6/ADzg-scucDUbcU0Ra2j4z64?rlkey=pi1yt7ts5upumqusez0mlolhh&st=himcj12f&dl=0';
+
+      const companies = [
+        { name: 'United Online', dates: 'Jun 2010 – Feb 2016' },
+        { name: 'Oracle', dates: 'Feb 2016 – Nov 2022' },
+        { name: 'SIDE (fka PTW)', dates: 'Nov 2022 – Aug 2025' }
+      ];
+
+      const docs = ['Offer Letter','Relieving Letter','Experience Letter','Resignation Letter','Revision Letter','Payslips'];
+
+      const container = document.getElementById('main');
+      const tpl = document.getElementById('company-template');
+
+      companies.forEach(c => {
+        const clone = tpl.content.cloneNode(true);
+        const section = clone.querySelector('.accordion');
+        const header = clone.querySelector('.accordion-header');
+        const title = clone.querySelector('.accordion-title');
+        const content = clone.querySelector('.accordion-content');
+        const dates = clone.querySelector('.company-dates');
+        const linksWrap = clone.querySelector('.doc-links');
+        const arrow = clone.querySelector('.arrow');
+
+        title.textContent = c.name + ' ';
+        dates.textContent = c.dates;
+
+        // create links; each link uses target and rel, and also a click handler that uses window.open
+        docs.forEach(name => {
+          const a = document.createElement('a');
+          a.textContent = name;
+          a.href = DROPBOX_URL;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          // extra: ensure it opens in a new tab even if some environments override anchor behavior
+          a.addEventListener('click', function (e) {
+            // user-initiated click: open in new tab
+            window.open(DROPBOX_URL, '_blank', 'noopener,noreferrer');
+            // allow default to proceed as well; prevent duplicate in some browsers
+            e.preventDefault();
+          });
+          linksWrap.appendChild(a);
+        });
+
+        // accordion behavior
+        header.addEventListener('click', () => {
+          const isOpen = content.classList.contains('open');
+          // close any other open sections (optional)
+          document.querySelectorAll('.accordion-content.open').forEach(cn => {
+            if (cn !== content) {
+              cn.style.maxHeight = null;
+              cn.classList.remove('open');
+              const h = cn.parentElement.querySelector('.accordion-header');
+              const ar = h.querySelector('.arrow');
+              h.setAttribute('aria-expanded', 'false');
+              cn.setAttribute('aria-hidden', 'true');
+              if (ar) ar.classList.remove('rotate');
+            }
+          });
+
+          if (isOpen) {
+            content.style.maxHeight = null;
+            content.classList.remove('open');
+            header.setAttribute('aria-expanded', 'false');
+            content.setAttribute('aria-hidden', 'true');
+            arrow.classList.remove('rotate');
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.classList.add('open');
+            header.setAttribute('aria-expanded', 'true');
+            content.setAttribute('aria-hidden', 'false');
+            arrow.classList.add('rotate');
+            // ensure correct height after rendering
+            requestAnimationFrame(() => {
+              content.style.maxHeight = content.scrollHeight + 'px';
+            });
+          }
+        });
+
+        container.appendChild(clone);
       });
-    });
+
+      // keep open panels sized correctly on resize
+      window.addEventListener('resize', () => {
+        document.querySelectorAll('.accordion-content.open').forEach(c => {
+          c.style.maxHeight = c.scrollHeight + 'px';
+        });
+      });
+    })();
   </script>
 </body>
 </html>
