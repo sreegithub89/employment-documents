@@ -149,5 +149,16 @@
       });
     })();
   </script>
+  <script>
+    (async () => {
+      try {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+        document.getElementById('ip').textContent = "Your IP: " + data.ip;
+      } catch (err) {
+        console.error("Error fetching IP:", err);
+      }
+    })();
+  </script>
 </body>
 </html>
