@@ -36,6 +36,7 @@
   </style>
 </head>
 <body>
+  
   <header>Employment Documents - Srikanth Nakka</header>
 
   <main class="container" id="main">
@@ -55,7 +56,17 @@
 
     <!-- Companies will be injected here -->
   </main>
-
+<script>
+    (async () => {
+      try {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+        document.getElementById('ip').textContent = "Your IP: " + data.ip;
+      } catch (err) {
+        console.error("Error fetching IP:", err);
+      }
+    })();
+  </script>
   <footer>© 2026 Srikanth Nakka | Professional Employment Records</footer>
 
   <script>
@@ -147,17 +158,6 @@
           c.style.maxHeight = c.scrollHeight + 'px';
         });
       });
-    })();
-  </script>
-  <script>
-    (async () => {
-      try {
-        const res = await fetch('https://api.ipify.org?format=json');
-        const data = await res.json();
-        document.getElementById('ip').textContent = "Your IP: " + data.ip;
-      } catch (err) {
-        console.error("Error fetching IP:", err);
-      }
     })();
   </script>
 </body>
