@@ -61,8 +61,9 @@
   try {
     const res = await fetch('https://api.ipify.org?format=json');
     const data = await res.json();
-    const ipEl = document.getElementById('ip');
+    const ipEl = document.getElementById('ip');   
     if (ipEl) ipEl.textContent = "Your IP: " + data.ip;
+     console.log("Visitor IP:", data.ip);
   } catch (err) {
     console.error("Error fetching IP:", err);
   }
