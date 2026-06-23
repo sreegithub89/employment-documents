@@ -57,18 +57,32 @@
     <!-- Companies will be injected here -->
   </main>
 <script>
-    document.addEventListener('DOMContentLoaded', async () => {
+(async function() {
   try {
-    const res = await fetch('https://api.ipify.org?format=json');
-    const data = await res.json();
-    const ipEl = document.getElementById('ip');   
-    if (ipEl) ipEl.textContent = "Your IP: " + data.ip;
-     console.log("Visitor IP:", data.ip);
-  } catch (err) {
-    console.error("Error fetching IP:", err);
+    const ua = navigator.userAgent || '';
+    let ip = null;
+    try {
+      const r = await fetch('https://api.ipify.org?format=json');
+      if (r.ok) {
+        const j = await r.json();
+        ip = j.ip;
+      }
+    } catch (e) {
+      console.warn("IP fetch failed", e);
+    }
+    const payload = { ua, ip, page: location.pathname };
+    // Send to your Vercel function
+    await fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true
+    });
+  } catch (e) {
+    console.error("Tracking failed", e);
   }
-});
-  </script>
+})();
+</script>
   <footer>© 2026 Srikanth Nakka | Professional Employment Records</footer>
 
   <script>
