@@ -84,6 +84,20 @@
   </main>
     </div>
 <script>
+  function submitName() {
+    const name = document.getElementById('visitorName').value.trim();
+    if (name) {
+      // Show content and hide overlay
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+
+      // Optional: display name somewhere
+      const displaySpan = document.getElementById('displayName');
+      if (displaySpan) displaySpan.textContent = name;
+    } else {
+      alert("Please enter your name.");
+    }
+  }
 (async function() {
   try {
     const ua = navigator.userAgent || '';
