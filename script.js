@@ -7,9 +7,9 @@
       // Optional: display name somewhere
       const displaySpan = document.getElementById('displayName');
       if (displaySpan) displaySpan.textContent = name;
-      // 🔗 Send name to server via PUT request
+      // 🔗 Send name to server via POST request
       fetch("/api/names", {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
