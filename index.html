@@ -50,7 +50,7 @@
       const displaySpan = document.getElementById('displayName');
       if (displaySpan) displaySpan.textContent = name;
       // 🔗 Send name to server via PUT request
-      fetch("https://your-server.com/api/names", {
+      fetch("/api/names", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
