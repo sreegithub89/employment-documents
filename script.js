@@ -1,4 +1,3 @@
-<script>
    function submitName() {
     const name = document.getElementById('visitorName').value.trim();
     if (name) {
@@ -52,4 +51,3 @@
     console.error("Tracking failed", e);
   }
 })();
-</script>
