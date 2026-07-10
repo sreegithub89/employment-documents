@@ -1,4 +1,45 @@
-   function submitName() {
+// Function 1: Filter cards by employee & company
+function filterCards() {
+  const employeeSelect = document.getElementById('employee');
+  const companySelect = document.getElementById('company');
+  const cards = document.querySelectorAll('.card');
+
+  const emp = employeeSelect.value;
+  const comp = companySelect.value;
+
+  cards.forEach(card => {
+    if (card.dataset.employee === emp && card.dataset.company === comp) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+// Function 2: Add hover logging
+function addHoverLogging() {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      console.log(`Hovered over ${card.querySelector('h3').textContent}`);
+    });
+  });
+}
+
+// Function 3: Initialize all behaviors
+function init() {
+  const employeeSelect = document.getElementById('employee');
+  const companySelect = document.getElementById('company');
+
+  employeeSelect.addEventListener('change', filterCards);
+  companySelect.addEventListener('change', filterCards);
+
+  filterCards(); // run once on load
+  addHoverLogging();
+}
+// Run init when DOM is ready
+document.addEventListener('DOMContentLoaded', init);
+
+function submitName() {
     const name = document.getElementById('visitorName').value.trim();
     if (name) {
       // Show content and hide overlay
