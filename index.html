@@ -1,144 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Employment Docs</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Employment Documents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f4f6f9; margin: 0; }
+    header { background: #1f2937; color: #fff; padding: 1rem; text-align: center; font-size: 1.5rem; }
+    .selectors { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem; }
+    select { padding: 0.5rem 1rem; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc; }
+    .container { max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 1rem; }
+    .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 1.5rem; }
+    .card h3 { margin: 0 0 1rem; font-size: 1.2rem; color: #1f2937; }
+    .doc-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .doc-links a { text-decoration: none; background: #2563eb; color: #fff; padding: 0.5rem 0.8rem; border-radius: 6px; font-size: 0.9rem; }
+    .doc-links a:hover { background: #1e40af; }
+  </style>
 </head>
 <body>
-  <!-- Overlay -->
-<div class="overlay" id="overlay">
-  <div class="modal">
-    <h2>Welcome!</h2>
-    <p>Please enter your name:</p>
-    <input type="text" id="visitorName" placeholder="Your name">
-    <button onclick="submitName()">Submit</button>
-  </div>
-</div>
-  <div id="content" style="display:none;">
   <header>Employment Documents</header>
-  <section style="text-align:center; margin-bottom:2rem;">
-    <h3 style="color:#6b7280; font-weight:normal;">Srikanth Nakka</h3>
-  </section>
-  <main class="container" id="main">
-    <!-- Template for each company -->
-    <template id="company-template">
-      <section class="accordion">
-        <button type="button" class="accordion-header" aria-expanded="false">
-          <span class="accordion-title"></span>
-          <span class="arrow" aria-hidden="true">▶</span>
-        </button>
-        <div class="accordion-content" aria-hidden="true">
-          <div class="company-dates"></div>
-          <div class="doc-links"></div>
-        </div>
-      </section>
-    </template>
 
-    <!-- Companies will be injected here -->
-  </main>
+  <!-- Employee & Company Selectors -->
+  <div class="selectors">
+    <div>
+      <label for="employee">Employee: </label>
+      <select id="employee">
+        <option value="srikanth">Srikanth</option>
+        <option value="john">John Doe</option>
+        <option value="jane">Jane Smith</option>
+      </select>
     </div>
-<script src="script.js"></script>
-  <footer>© 2026 Employment Records. intended for verification purposes.
-<p style="font-size:0.7rem; color:#6b7280; margin-top:0.5rem; text-align:center;">
-    Note: This page logs visitor IP address and User‑Agent for security and auditing purposes.  
-    <a href="https://github.com/sreegithub89" target="_blank" style="color:#0078D7; text-decoration:none;">me@GitHub</a>.
-  </p>
-    <p style="font-size:9px; color:gray; text-align:center; margin-top:20px;">
-* <em>Code drafted with Copilot suggestions.</em> *
-</p>
-  </footer>
-  <script>
-    (function () {
-      const DROPBOX_URL = 'https://www.dropbox.com/scl/fo/apr6wnbdtmswyhy9j3uz7/ADzg-scucDUbcU0Ra2j4z64?rlkey=pi1yt7ts5upumqusez0mlolhh&st=himcj12f&dl=0';
+    <div>
+      <label for="company">Company: </label>
+      <select id="company">
+        <option value="united">United Online</option>
+        <option value="oracle">Oracle</option>
+        <option value="side">SIDE (fka PTW)</option>
+      </select>
+    </div>
+  </div>
 
-      const companies = [
-        { name: 'United Online', dates: 'Jun 2010 – Feb 2016' },
-        { name: 'Oracle', dates: 'Feb 2016 – Nov 2022' },
-        { name: 'SIDE (fka PTW)', dates: 'Nov 2022 – Aug 2025' }
-      ];
+  <!-- Cards -->
+  <div class="container">
+    <div class="card" data-employee="srikanth" data-company="united">
+      <h3>United Online</h3>
+      <div class="doc-links">
+        <a href="#">Offer Letter</a>
+        <a href="#">Relieving Letter</a>
+        <a href="#">Experience Letter</a>
+        <a href="#">Resignation Letter</a>
+        <a href="#">Revision Letter</a>
+        <a href="#">Payslips</a>
+      </div>
+    </div>
 
-      const docs = ['Offer Letter','Relieving Letter','Experience Letter','Resignation Letter','Revision Letter','Payslips'];
+    <div class="card" data-employee="srikanth" data-company="oracle">
+      <h3>Oracle</h3>
+      <div class="doc-links">
+        <a href="#">Offer Letter</a>
+        <a href="#">Relieving Letter</a>
+        <a href="#">Experience Letter</a>
+        <a href="#">Resignation Letter</a>
+        <a href="#">Revision Letter</a>
+        <a href="#">Payslips</a>
+      </div>
+    </div>
 
-      const container = document.getElementById('main');
-      const tpl = document.getElementById('company-template');
-
-      companies.forEach(c => {
-        const clone = tpl.content.cloneNode(true);
-        const section = clone.querySelector('.accordion');
-        const header = clone.querySelector('.accordion-header');
-        const title = clone.querySelector('.accordion-title');
-        const content = clone.querySelector('.accordion-content');
-        const dates = clone.querySelector('.company-dates');
-        const linksWrap = clone.querySelector('.doc-links');
-        const arrow = clone.querySelector('.arrow');
-
-        title.textContent = c.name + ' ';
-        dates.textContent = c.dates;
-
-        // create links; each link uses target and rel, and also a click handler that uses window.open
-        docs.forEach(name => {
-          const a = document.createElement('a');
-          a.textContent = name;
-          a.href = DROPBOX_URL;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          // extra: ensure it opens in a new tab even if some environments override anchor behavior
-          a.addEventListener('click', function (e) {
-            // user-initiated click: open in new tab
-            window.open(DROPBOX_URL, '_blank', 'noopener,noreferrer');
-            // allow default to proceed as well; prevent duplicate in some browsers
-            e.preventDefault();
-          });
-          linksWrap.appendChild(a);
-        });
-
-        // accordion behavior
-        header.addEventListener('click', () => {
-          const isOpen = content.classList.contains('open');
-          // close any other open sections (optional)
-          document.querySelectorAll('.accordion-content.open').forEach(cn => {
-            if (cn !== content) {
-              cn.style.maxHeight = null;
-              cn.classList.remove('open');
-              const h = cn.parentElement.querySelector('.accordion-header');
-              const ar = h.querySelector('.arrow');
-              h.setAttribute('aria-expanded', 'false');
-              cn.setAttribute('aria-hidden', 'true');
-              if (ar) ar.classList.remove('rotate');
-            }
-          });
-
-          if (isOpen) {
-            content.style.maxHeight = null;
-            content.classList.remove('open');
-            header.setAttribute('aria-expanded', 'false');
-            content.setAttribute('aria-hidden', 'true');
-            arrow.classList.remove('rotate');
-          } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            content.classList.add('open');
-            header.setAttribute('aria-expanded', 'true');
-            content.setAttribute('aria-hidden', 'false');
-            arrow.classList.add('rotate');
-            // ensure correct height after rendering
-            requestAnimationFrame(() => {
-              content.style.maxHeight = content.scrollHeight + 'px';
-            });
-          }
-        });
-
-        container.appendChild(clone);
-      });
-
-      // keep open panels sized correctly on resize
-      window.addEventListener('resize', () => {
-        document.querySelectorAll('.accordion-content.open').forEach(c => {
-          c.style.maxHeight = c.scrollHeight + 'px';
-        });
-      });
-    })();
-  </script>
+    <div class="card" data-employee="srikanth" data-company="side">
+      <h3>SIDE (fka PTW)</h3>
+      <div class="doc-links">
+        <a href="#">Offer Letter</a>
+        <a href="#">Relieving Letter</a>
+        <a href="#">Experience Letter</a>
+        <a href="#">Resignation Letter</a>
+        <a href="#">Revision Letter</a>
+        <a href="#">Payslips</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
