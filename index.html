@@ -6,45 +6,32 @@
 </head>
 <body>
   <h1>Employment Documents</h1>
+
   <!-- Employee & Company selectors -->
   <label for="employee">Employee:</label>
   <select id="employee">
-    <option value="srikanth">Srikanth</option>
-    <option value="john">John Doe</option>
+    <option value="srikanth nakka">Srikanth Nakka</option>
+    <option value="john doe">John Doe</option>
   </select>
 
   <label for="company">Company:</label>
   <select id="company">
     <option value="oracle">Oracle</option>
     <option value="united">United Online</option>
+    <option value="side">SIDE (fka PTW)</option>
   </select>
 
-  <!-- Cards -->
-  <div class="card" data-employee="srikanth" data-company="oracle">
-    <h3>Oracle</h3>
-    <div class="doc-links">
-      <a href="#">Offer Letter</a>
-      <a href="#">Relieving Letter</a>
-      <a href="#">Experience Letter</a>
-      <a href="#">Resignation Letter</a>
-      <a href="#">Revision Letter</a>
-      <a href="#">Payslips</a>
-    </div>
-  </div>
-
-  <div class="card" data-employee="john" data-company="united">
-    <h3>United Online</h3>
-    <div class="doc-links">
-      <a href="#">Offer Letter</a>
-      <a href="#">Relieving Letter</a>
-      <a href="#">Experience Letter</a>
-      <a href="#">Resignation Letter</a>
-      <a href="#">Revision Letter</a>
-      <a href="#">Payslips</a>
-    </div>
-  </div>
-
-  <!-- Single script reference -->
+  <!-- Container where cards will be injected -->
+  <div id="card-container"></div>
   <script src="docs-links.js"></script>
 </body>
+    <footer>© 2026 Employment Records. intended for verification purposes.
+<p style="font-size:0.7rem; color:#6b7280; margin-top:0.5rem; text-align:center;">
+    Note: This page logs visitor IP address and User‑Agent for security and auditing purposes.  
+    <a href="https://github.com/sreegithub89" target="_blank" style="color:#0078D7; text-decoration:none;">me@GitHub</a>.
+  </p>
+    <p style="font-size:9px; color:gray; text-align:center; margin-top:20px;">
+* <em>Code drafted with Copilot suggestions.</em> *
+</p>
+  </footer>
 </html>
