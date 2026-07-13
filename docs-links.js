@@ -16,7 +16,7 @@ function generateCard(employee, company) {
   // Create card div
   const card = document.createElement("div");
   card.className = "card";
-  card.dataset.employee = employee;
+  card.dataset.employee = emp-name;
   card.dataset.company = company;
 
   // Company heading
@@ -41,7 +41,7 @@ function generateCard(employee, company) {
 
 // Initialize selectors
 function init() {
-  const employeeSelect = document.getElementById("employee");
+  const employeeSelect = document.getElementById("emp-name");
   const companySelect = document.getElementById("company");
 
   function updateCard() {
