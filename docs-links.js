@@ -16,7 +16,7 @@ function generateCard(employee, company) {
   // Create card div
   const card = document.createElement("div");
   card.className = "card";
-  card.dataset.employee = emp-name;
+  card.dataset.employee = employee;
   card.dataset.company = company;
 
   // Company heading
